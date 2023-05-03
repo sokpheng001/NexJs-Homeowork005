@@ -1,13 +1,40 @@
 import Card_ from '@/component/Card_'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useRouter } from 'next/router';
+import { setRequestMeta } from 'next/dist/server/request-meta';
+import Placeholder_ from '@/component/Placeholder_';
 
 
 
 export default function movie({products}) {
-  const get = products;
-  console.log(get)
+  const [get,setGet] = useState([]);
+  const[isLoading,setIsLoading] = useState(false);
+  useEffect(()=>{
+    setIsLoading(true)
+    setTimeout(()=>{
+      setGet(products)
+      setIsLoading(false)
+    },2000)
+  },[])
+  if(isLoading){
+    return (
+      products.map(e=>(
+        <Container>
+          <Row className='row row-cols-xl-4 row-cols-lg-3 row-cols-sm-1 row-cols-md-2'>
+            {
+              products.map(e=>(
+                <Col className='d-flex justify-content-center'>
+                  <Placeholder_/>
+                </Col>
+              ))
+            }
+          </Row>
+        </Container>
+      ))
+    )
+  }
+  // console.log(get)
   return (
     <React.Fragment>
       <Container className=''>
@@ -16,7 +43,7 @@ export default function movie({products}) {
           get.length > 0 && get.map(e=>
             (
               <Col className='mt-5 d-flex justify-content-center'>
-                <Card_ 
+              <Card_ 
                 category={e.category}
                 title={e.title} 
                 image={e.image} 

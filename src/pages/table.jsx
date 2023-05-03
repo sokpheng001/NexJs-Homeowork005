@@ -9,8 +9,13 @@ import { Form, Button } from 'react-bootstrap';
 export default function table() {
   const[data,setData] = useState([]);
   const [data1, setData1] = useState("");
+  const [isLoading,setIsLoading] = useState(false);
   useEffect(()=>{
-    fetch("https://fakestoreapi.com/products").then(e=>e.json()).then(e=>setData(e));
+    setIsLoading(true);
+    setTimeout(()=>{
+      fetch("https://fakestoreapi.com/products").then(e=>e.json()).then(e=>setData(e));
+      setIsLoading(false);
+    },2000)
   },[])
     const columns = [
         {
@@ -31,7 +36,12 @@ export default function table() {
         } ,
         {
           name:"Action",
-          selector: row=><Button variant="outline-dark">Buy Now</Button>
+          selector: row=>(
+            <div>
+              <Button variant="outline-dark" className='my-3'>Detail</Button>
+              <Button variant="dark" className='mx-3'>Buy Now</Button>
+            </div>
+          )
         } 
       
     ];
@@ -43,6 +53,7 @@ export default function table() {
     }
   return (
     <Container>
+      <h1 className='mt-3'>Products</h1>
       <Form className="d-flex float-center mt-4 mb-4">
             <Form.Control
               type="search"
@@ -57,9 +68,9 @@ export default function table() {
             columns={columns} 
             data={search(data)} 
             className='mt-4 shadow'
-            selectableRows
             responsive
             pagination
+            progressPending={isLoading}
             ></DataTable>
     </Container>
   )
