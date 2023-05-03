@@ -26,11 +26,18 @@ export default function table() {
             selector:row=>row.category
         },
         {
-          name:"Photos", 
+          name:"Photos",
           selector:row=><img className="image mt-2 mb-2 " src = {row.image} style={{width:"40px", height:"55px"}}/>
-        }  
+        } ,
+        {
+          name:"Action",
+          selector: row=><Button variant="outline-dark">Buy Now</Button>
+        } 
+      
     ];
-    //function for searching
+    //detail
+    
+    //function for searching data in table
     const search  = (data2)=>{
       return data2.filter((item)=> item.title.toLowerCase().includes(data1.toLowerCase()));
     }

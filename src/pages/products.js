@@ -1,15 +1,12 @@
 import Card_ from '@/component/Card_'
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { API_KEY, BASE_PATH, BASE_URL } from '@/lib';
-import Carousel_ from '@/component/Carousel_';
 import { useRouter } from 'next/router';
 
 
 
-export default function movie({movies}) {
-  const route = useRouter();
-  const get = movies;
+export default function movie({products}) {
+  const get = products;
   console.log(get)
   return (
     <React.Fragment>
@@ -19,7 +16,9 @@ export default function movie({movies}) {
           get.length > 0 && get.map(e=>
             (
               <Col className='mt-5 d-flex justify-content-center'>
-                <Card_ title={e.category} 
+                <Card_ 
+                category={e.category}
+                title={e.title} 
                 image={e.image} 
                 id={e.id}
                 description={e.description}
@@ -38,18 +37,10 @@ export async function getServerSideProps(){
   // const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=1%60`;
   const url = `https://fakestoreapi.com/products`;
   const res  = await fetch(url);
-  const movies = await res.json();
-
-  if(!movies){
-    return{
-      props:{
-        movies:[],
-      }
-    }
-  }
+  const products = await res.json();
   return{
     props:{
-      movies,
+      products,
     },
   }
 }

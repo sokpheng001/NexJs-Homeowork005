@@ -1,4 +1,5 @@
 import { PLACEHOLDER } from '@/lib';
+import CardShow from '@/pages/CardShow';
 import { Oooh_Baby } from 'next/font/google';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
@@ -6,14 +7,15 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export default function Card_({id,title,price,description,category,image}) {
-    const route = useRouter();
+  const router = useRouter();
     const handlerClick = ()=>{
-        route.push({
-          pathname:`/movie/${id}`,
+        router.push({
+          pathname: `/products/${id}`,
           query:{ 
-            image:image,
+            image:image, 
             title:title,
-            description:description
+            description:description,
+            category:category
           }
         });
     }
@@ -28,7 +30,7 @@ export default function Card_({id,title,price,description,category,image}) {
           {
             height:"20px"
           }
-          }>{title ? title:"Unknown"}</Card.Title>
+          }>{title ? category:"Unknown"}</Card.Title>
         <Card.Text>
             Price: {price? price :"Unknown"}$
         </Card.Text>
