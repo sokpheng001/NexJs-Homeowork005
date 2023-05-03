@@ -17,7 +17,7 @@ export default function Card_({id,title,price,description,category,image}) {
           }
         });
     }
-  console.log(id)
+    //
   return (
     <div>
       <Card style={{ width: '18rem'}} className='shadow'>
@@ -30,7 +30,7 @@ export default function Card_({id,title,price,description,category,image}) {
           }
           }>{title ? title:"Unknown"}</Card.Title>
         <Card.Text>
-            price: {price? price :"Unknown"}$
+            Price: {price? price :"Unknown"}$
         </Card.Text>
         <Button variant="dark" onClick={handlerClick}>Read More</Button>
       </Card.Body>

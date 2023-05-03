@@ -2,9 +2,9 @@ import { useRouter } from 'next/router'
 import { Button, Card,Container } from 'react-bootstrap';
 import React, { useState } from 'react';
 
-export default function Movie() {
+export default function Movie({data}) {
     const route = useRouter();
-    console.log(route.query.id)
+    alert(route.query.title)
   return (
     <Container className=''>
       <Button variant='dark' className='mt-4 mb-4' href='/products'>Previous Page</Button>
