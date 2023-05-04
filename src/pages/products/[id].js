@@ -4,7 +4,7 @@ import { Card,Button,Container } from 'react-bootstrap';
 import { useRouter } from 'next/router'
 
 export default function Product() {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <Container className=''>
     <Button variant='dark' className='mt-4 mb-4' href='/products'>Previous Page</Button>

@@ -5,7 +5,7 @@ import { Card, Container, Placeholder } from 'react-bootstrap'
 export default function Placeholder_() {
   return (
     <Container className='mt-5'>
-            <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className='shadow'>
     <Card.Img variant="top" src={PLACEHOLDER} />
     <Card.Body>
       <Placeholder as={Card.Title} animation="glow">
