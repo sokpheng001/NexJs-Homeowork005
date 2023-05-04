@@ -50,7 +50,6 @@ export default function table() {
       
     ];
     //detail
-    
     //function for searching data in table
     const search  = (data2)=>{
       return data2.filter((item)=> item.title.toLowerCase().includes(data1.toLowerCase()));
