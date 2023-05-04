@@ -71,6 +71,7 @@ export default function table() {
             responsive
             pagination
             progressPending={isLoading}
+            selectableRows
             ></DataTable>
     </Container>
   )

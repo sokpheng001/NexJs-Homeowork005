@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import { setRequestMeta } from 'next/dist/server/request-meta';
 import Placeholder_ from '@/component/Placeholder_';
 
-
-
 export default function movie({products}) {
   const [get,setGet] = useState([]);
   const[isLoading,setIsLoading] = useState(false);
