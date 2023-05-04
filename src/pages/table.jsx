@@ -13,9 +13,13 @@ export default function table() {
   useEffect(()=>{
     setIsLoading(true);
     setTimeout(()=>{
-      fetch("https://fakestoreapi.com/products").then(e=>e.json()).then(e=>setData(e));
+      fetch("https://fakestoreapi.com/products").then(e=>e.json()).then(e=>setData(e))
+      .catch(error=>{
+        console.log("Error: " + error);
+      })
       setIsLoading(false);
     },2000)
+
   },[])
     const columns = [
         {
